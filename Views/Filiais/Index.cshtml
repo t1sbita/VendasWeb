@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VendasWeb.Models.Filial>
+
+@{
+    ViewData["Title"] = "Filiais";
+}
+
+<h1>Nossas Filiais</h1>
+
+<p>
+    <a asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Filial@*Html.DisplayNameFor(model => model.FilialNome)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.FilialNome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FilialId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.FilialId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.FilialId">Remover</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

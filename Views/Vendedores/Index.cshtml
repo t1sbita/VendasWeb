@@ -1,0 +1,53 @@
+﻿@model IEnumerable<VendasWeb.Models.Vendedor>
+
+@{
+    ViewData["Title"] = "Vendedores";
+}
+
+<h1>Nossos vendedores</h1>
+
+<p>
+    <a asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome@*Html.DisplayNameFor(model => model.VendedorNome)*@
+            </th>
+            <th>
+                E-mail@*Html.DisplayNameFor(model => model.VendedorEmail)*@
+            </th>
+            <th>
+                Aniversário@*Html.DisplayNameFor(model => model.VendedorAniversario)*@
+            </th>
+            <th>
+                Filial@*Html.DisplayNameFor(model => model.VendedorAniversario)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorAniversario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filial.FilialNome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VendedorId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.VendedorId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.VendedorId">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

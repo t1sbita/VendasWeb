@@ -10,6 +10,8 @@ namespace VendasWeb.Models
         public int FilialId { get; set; }
         public string FilialNome { get; set; }
 
+        public List<Vendedor> Vendedores = new List<Vendedor>();
+
         public Filial()
         {
 
@@ -20,5 +22,17 @@ namespace VendasWeb.Models
             FilialId = filialId;
             FilialNome = filialNome;
         }
+
+        public void AdicionarVendedor(Vendedor vendedor)
+        {
+            Vendedores.Add(vendedor);
+        }
+
+        public void RemoverVendedor(Vendedor vendedor)
+        {
+            Vendedores.Remove(vendedor);
+        }
+
+        
     }
 }
