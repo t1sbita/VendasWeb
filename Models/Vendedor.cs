@@ -14,6 +14,7 @@ namespace VendasWeb.Models
         public decimal VendedorSalario { get; set; }
         public Filial Filial { get; set; }
         
+        
 
         public List<RegistroVendas> VendasRealizadas = new List<RegistroVendas>();
 
@@ -30,6 +31,7 @@ namespace VendasWeb.Models
             VendedorAniversario = vendedorAniversario;
             VendedorSalario = vendedorSalario;
             Filial = filial;
+            
         }
 
         public void AdicionarVenda(RegistroVendas vendagem)
@@ -41,5 +43,7 @@ namespace VendasWeb.Models
         {
             VendasRealizadas.Remove(vendagem);
         }
+
+       
     }
 }
