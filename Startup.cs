@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using VendasWeb.Data;
+using VendasWeb.Services;
 
 namespace VendasWeb
 {
@@ -30,14 +31,19 @@ namespace VendasWeb
             services.AddDbContext<VendasWebContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("VendasWebContext"), builder =>
                     builder.MigrationsAssembly("VendasWeb")));
+
+            services.AddScoped<AlimentaBanco>();
+            services.AddScoped<ServicoVendedor>();
+            services.AddScoped<ServicoFilial>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AlimentaBanco alimentaBanco)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                alimentaBanco.Alimenta();
             }
             else
             {

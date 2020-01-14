@@ -11,26 +11,26 @@ namespace VendasWeb.Models
         public string VendedorNome { get; set; }
         public string VendedorEmail { get; set; }
         public DateTime VendedorAniversario { get; set; }
-        public decimal VendedorSalario { get; set; }
+        public float VendedorSalario { get; set; }
         public Filial Filial { get; set; }
+        public int FilialId { get; set; }
         
-        
-
-        public List<RegistroVendas> VendasRealizadas = new List<RegistroVendas>();
+        public ICollection<RegistroVendas> VendasRealizadas = new List<RegistroVendas>();
 
         public Vendedor()
         {
 
         }
 
-        public Vendedor(int vendedorId, string vendedorNome, string vendedorEmail, DateTime vendedorAniversario, decimal vendedorSalario, Filial filial)
+        public Vendedor(int vendedorId, string vendedorNome, string vendedorEmail, DateTime vendedorAniversario, float vendedorSalario, Filial filial)
         {
             VendedorId = vendedorId;
             VendedorNome = vendedorNome;
             VendedorEmail = vendedorEmail;
-            VendedorAniversario = vendedorAniversario;
+            VendedorAniversario = DateTime.Parse(vendedorAniversario.ToString("dd/MM/yyyy"));
             VendedorSalario = vendedorSalario;
             Filial = filial;
+
             
         }
 
@@ -44,6 +44,12 @@ namespace VendasWeb.Models
             VendasRealizadas.Remove(vendagem);
         }
 
-       
+       public float TotalVendas(DateTime inicio, DateTime final)
+        {
+            return VendasRealizadas.Where(vendas => vendas.DataVenda >= inicio && vendas.DataVenda <= final)
+                .Sum(vendas => vendas.ValorVenda);
+        }
+
+        
     }
 }

@@ -10,7 +10,7 @@ namespace VendasWeb.Models
         public int FilialId { get; set; }
         public string FilialNome { get; set; }
 
-        public List<Vendedor> Vendedores = new List<Vendedor>();
+        public ICollection<Vendedor> Vendedores = new List<Vendedor>();
 
         public Filial()
         {
@@ -33,6 +33,9 @@ namespace VendasWeb.Models
             Vendedores.Remove(vendedor);
         }
 
-        
+        public float TotalVendaFilial(DateTime inicio, DateTime final)
+        {
+            return Vendedores.Sum(vendedor => vendedor.TotalVendas(inicio, final));
+        }
     }
 }

@@ -31,13 +31,38 @@ namespace VendasWeb.Migrations
                     b.ToTable("Filial");
                 });
 
+            modelBuilder.Entity("VendasWeb.Models.RegistroVendas", b =>
+                {
+                    b.Property<int>("RegistroVendasId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataVenda")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("StatusVenda")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ValorVenda")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("VendedorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RegistroVendasId");
+
+                    b.HasIndex("VendedorId");
+
+                    b.ToTable("RegistroVendas");
+                });
+
             modelBuilder.Entity("VendasWeb.Models.Vendedor", b =>
                 {
                     b.Property<int>("VendedorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("FilialId")
+                    b.Property<int>("FilialId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("VendedorAniversario")
@@ -49,8 +74,8 @@ namespace VendasWeb.Migrations
                     b.Property<string>("VendedorNome")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<decimal>("VendedorSalario")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<float>("VendedorSalario")
+                        .HasColumnType("float");
 
                     b.HasKey("VendedorId");
 
@@ -59,11 +84,20 @@ namespace VendasWeb.Migrations
                     b.ToTable("Vendedor");
                 });
 
+            modelBuilder.Entity("VendasWeb.Models.RegistroVendas", b =>
+                {
+                    b.HasOne("VendasWeb.Models.Vendedor", "Vendedor")
+                        .WithMany()
+                        .HasForeignKey("VendedorId");
+                });
+
             modelBuilder.Entity("VendasWeb.Models.Vendedor", b =>
                 {
                     b.HasOne("VendasWeb.Models.Filial", "Filial")
                         .WithMany()
-                        .HasForeignKey("FilialId");
+                        .HasForeignKey("FilialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

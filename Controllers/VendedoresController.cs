@@ -7,21 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VendasWeb.Data;
 using VendasWeb.Models;
+using VendasWeb.Models.ViewModel;
+using VendasWeb.Services;
 
 namespace VendasWeb.Controllers
 {
     public class VendedoresController : Controller
     {
         private readonly VendasWebContext _context;
+        private readonly ServicoVendedor _servicoVendedor;
+        private readonly ServicoFilial _servicoFilial;
 
-        public VendedoresController(VendasWebContext context)
+        public VendedoresController(VendasWebContext context, ServicoVendedor servicoVendedor, ServicoFilial servicoFilial)
         {
             _context = context;
+            _servicoVendedor = servicoVendedor;
+            _servicoFilial = servicoFilial;
         }
+
 
         // GET: Vendedors
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Vendedor.ToListAsync());
         }
 
@@ -35,6 +43,7 @@ namespace VendasWeb.Controllers
 
             var vendedor = await _context.Vendedor
                 .FirstOrDefaultAsync(m => m.VendedorId == id);
+            
             if (vendedor == null)
             {
                 return NotFound();
@@ -46,7 +55,9 @@ namespace VendasWeb.Controllers
         // GET: Vendedors/Create
         public IActionResult Create()
         {
-            return View();
+            var filiais = _servicoFilial.EncontreTodos();
+            var viewModel = new VendedorFormViewModel { Filiais = filiais };
+            return View(viewModel);
         }
 
         // POST: Vendedors/Create
@@ -54,7 +65,7 @@ namespace VendasWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VendedorId,VendedorNome,VendedorEmail,VendedorAniversario,VendedorSalario")] Vendedor vendedor)
+        public async Task<IActionResult> Create( Vendedor vendedor) //[Bind("VendedorId,VendedorNome,VendedorEmail,VendedorAniversario,VendedorSalario")]
         {
             if (ModelState.IsValid)
             {

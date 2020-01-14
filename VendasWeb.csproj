@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20191222000448_Inicial.cs" />
     <Compile Remove="Migrations\20191222000448_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20191222001426_Inicial.cs" />
+    <Compile Remove="Migrations\20191222001426_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20191226180651_Registro_Vendas_Add.cs" />
+    <Compile Remove="Migrations\20191226180651_Registro_Vendas_Add.Designer.cs" />
+    <Compile Remove="Migrations\20200114165837_Atualizacao.cs" />
+    <Compile Remove="Migrations\20200114165837_Atualizacao.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

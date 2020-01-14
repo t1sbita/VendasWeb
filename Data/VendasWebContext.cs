@@ -17,5 +17,6 @@ namespace VendasWeb.Data
         public DbSet<Filial> Filial { get; set; }
 
         public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<RegistroVendas> RegistroVendas { get; set; }
     }
 }
