@@ -27,11 +27,11 @@ namespace VendasWeb.Data
             Filial barra = new Filial(3, "Barra");
             Filial ondina = new Filial(4, "Ondina");
 
-            Vendedor pedro = new Vendedor(10, "Pedro Henrique", "pedro@vendas.com.br", new DateTime(1993, 03, 27), 2500, centro);
-            Vendedor otavio = new Vendedor(11, "Otavio Oliveira", "otavio@vendas.com.br", new DateTime(1997, 02, 08), 2400, barra);
-            Vendedor raquel = new Vendedor(12, "Raquel Garcia", "keel@vendas.com.br", new DateTime(1997, 12, 05), 3100, cajazeiras);
-            Vendedor cardoso = new Vendedor(13, "Antonio Cardoso", "cardoso@vendas.com.br", new DateTime(1968, 04, 04), 2740, ondina);
-            Vendedor felipe = new Vendedor(14, "Felipe Ferreira", "ferreira@vendas.com.br", new DateTime(1999, 10, 20), 2000, cajazeiras);
+            Vendedor pedro = new Vendedor(10, "Pedro Henrique", "pedro@vendas.com.br", new DateTime(1993, 03, 27), 2500);
+            Vendedor otavio = new Vendedor(11, "Otavio Oliveira", "otavio@vendas.com.br", new DateTime(1997, 02, 08), 2400);
+            Vendedor raquel = new Vendedor(12, "Raquel Garcia", "keel@vendas.com.br", new DateTime(1997, 12, 05), 3100);
+            Vendedor cardoso = new Vendedor(13, "Antonio Cardoso", "cardoso@vendas.com.br", new DateTime(1968, 04, 04), 2740);
+            Vendedor felipe = new Vendedor(14, "Felipe Ferreira", "ferreira@vendas.com.br", new DateTime(1999, 10, 20), 2000);
 
             RegistroVendas vendas1 = new RegistroVendas(101, new DateTime(2019, 05, 10), raquel, 1500, StatusVenda.Faturada);
             RegistroVendas vendas2 = new RegistroVendas(102, new DateTime(2019, 07, 20), cardoso, 1000, StatusVenda.Pendente);

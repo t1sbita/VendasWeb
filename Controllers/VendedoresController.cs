@@ -29,8 +29,12 @@ namespace VendasWeb.Controllers
         // GET: Vendedors
         public async Task<IActionResult> Index()
         {
+            var vendedores = _servicoVendedor.EncontreTodos();
+            var filiais = _servicoFilial.EncontreTodos();
+            var viewModel = new VendedorFormViewModel { Filiais = filiais, Vendedores = vendedores };
             
-            return View(await _context.Vendedor.ToListAsync());
+            return View(viewModel);
+            //return View(await _context.Vendedor.ToListAsync());
         }
 
         // GET: Vendedors/Details/5
@@ -49,7 +53,9 @@ namespace VendasWeb.Controllers
                 return NotFound();
             }
 
-            return View(vendedor);
+            var filial = _servicoVendedor.IdentificaFilial(vendedor);
+            var viewModel = new VendedorFormViewModel { Filial = filial, Vendedor = vendedor };
+            return View(viewModel);
         }
 
         // GET: Vendedors/Create
@@ -89,7 +95,10 @@ namespace VendasWeb.Controllers
             {
                 return NotFound();
             }
-            return View(vendedor);
+
+            var filiais = _servicoFilial.EncontreTodos();
+            var viewModel = new VendedorFormViewModel { Filiais = filiais , Vendedor = vendedor};
+            return View(viewModel);
         }
 
         // POST: Vendedors/Edit/5
@@ -97,7 +106,7 @@ namespace VendasWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VendedorId,VendedorNome,VendedorEmail,VendedorAniversario,VendedorSalario")] Vendedor vendedor)
+        public async Task<IActionResult> Edit(int id, [Bind("VendedorId,VendedorNome,VendedorEmail,VendedorAniversario,VendedorSalario,FilialId")] Vendedor vendedor)
         {
             if (id != vendedor.VendedorId)
             {

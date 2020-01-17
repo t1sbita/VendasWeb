@@ -79,8 +79,6 @@ namespace VendasWeb.Migrations
 
                     b.HasKey("VendedorId");
 
-                    b.HasIndex("FilialId");
-
                     b.ToTable("Vendedor");
                 });
 
@@ -89,15 +87,6 @@ namespace VendasWeb.Migrations
                     b.HasOne("VendasWeb.Models.Vendedor", "Vendedor")
                         .WithMany()
                         .HasForeignKey("VendedorId");
-                });
-
-            modelBuilder.Entity("VendasWeb.Models.Vendedor", b =>
-                {
-                    b.HasOne("VendasWeb.Models.Filial", "Filial")
-                        .WithMany()
-                        .HasForeignKey("FilialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

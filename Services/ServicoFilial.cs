@@ -20,5 +20,7 @@ namespace VendasWeb.Services
         {
             return _context.Filial.ToList();
         }
+
+        
     }
 }

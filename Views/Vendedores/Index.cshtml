@@ -1,4 +1,4 @@
-﻿@model List<VendasWeb.Models.Vendedor>
+﻿@model VendasWeb.Models.ViewModel.VendedorFormViewModel
 
 @{
     ViewData["Title"] = "Vendedores";
@@ -28,26 +28,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendedorNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendedorEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendedorAniversario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilialId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VendedorId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.VendedorId">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.VendedorId">Apagar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Vendedores)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendedorNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendedorEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendedorAniversario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilialId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VendedorId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.VendedorId">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VendedorId">Apagar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

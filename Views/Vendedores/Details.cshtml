@@ -1,4 +1,4 @@
-﻿@model VendasWeb.Models.Vendedor
+﻿@model VendasWeb.Models.ViewModel.VendedorFormViewModel
 
 @{
     ViewData["Title"] = "Detalhes";
@@ -14,35 +14,35 @@
           Nome Vendedor  @*Html.DisplayNameFor(model => model.VendedorNome)*@
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.VendedorNome)
+            @Html.DisplayFor(model => model.Vendedor.VendedorNome)
         </dd>
         <dt class="col-sm-2">
            Email @*Html.DisplayNameFor(model => model.VendedorEmail)*@
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.VendedorEmail)
+            @Html.DisplayFor(model => model.Vendedor.VendedorEmail)
         </dd>
         <dt class="col-sm-2">
            Aniversário @*Html.DisplayNameFor(model => model.VendedorAniversario)*@
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.VendedorAniversario)
+            @Html.DisplayFor(model => model.Vendedor.VendedorAniversario)
         </dd>
         <dt class="col-sm-2">
            Salário Base @*Html.DisplayNameFor(model => model.VendedorSalario)*@
         </dt>
         <dd class="col-sm-10">
-           R$ @Html.DisplayFor(model => model.VendedorSalario)
+           R$ @Html.DisplayFor(model => model.Vendedor.VendedorSalario)
         </dd>
         <dt class="col-sm-2">
            Filial @*Html.DisplayNameFor(model => model.Filial)*@
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Filial.FilialId)
+           @Html.DisplayFor(model => model.Filial.FilialNome)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.VendedorId">Editar</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Vendedor.VendedorId">Editar</a> |
     <a asp-action="Index">Voltar para a lista</a>
 </div>

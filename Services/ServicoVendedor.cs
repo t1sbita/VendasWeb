@@ -20,5 +20,11 @@ namespace VendasWeb.Services
         {
             return _context.Vendedor.ToList();
         }
+
+        //Recupera a filial do Vendedor
+        public Filial IdentificaFilial(Vendedor vendedor)
+        {
+            return _context.Filial.Find(vendedor.FilialId);
+        }
     }
 }

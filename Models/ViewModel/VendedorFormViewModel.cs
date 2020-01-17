@@ -10,5 +10,6 @@ namespace VendasWeb.Models.ViewModel
         public Vendedor Vendedor { get; set; }
         public Filial Filial { get; set; }
         public List<Filial> Filiais { get; set; }
+        public List<Vendedor> Vendedores { get; set; }
     }
 }

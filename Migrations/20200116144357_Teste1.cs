@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VendasWeb.Migrations
 {
-    public partial class Correcoes : Migration
+    public partial class Teste1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace VendasWeb.Migrations
                 {
                     FilialId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FilialNome = table.Column<string>(nullable: true)
+                    FilialNome = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,8 +27,8 @@ namespace VendasWeb.Migrations
                 {
                     VendedorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VendedorNome = table.Column<string>(nullable: true),
-                    VendedorEmail = table.Column<string>(nullable: true),
+                    VendedorNome = table.Column<string>(nullable: false),
+                    VendedorEmail = table.Column<string>(nullable: false),
                     VendedorAniversario = table.Column<DateTime>(nullable: false),
                     VendedorSalario = table.Column<float>(nullable: false),
                     FilialId = table.Column<int>(nullable: false)

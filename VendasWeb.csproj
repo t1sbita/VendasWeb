@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20191226180651_Registro_Vendas_Add.Designer.cs" />
     <Compile Remove="Migrations\20200114165837_Atualizacao.cs" />
     <Compile Remove="Migrations\20200114165837_Atualizacao.Designer.cs" />
+    <Compile Remove="Migrations\20200114185539_Correcoes.cs" />
+    <Compile Remove="Migrations\20200114185539_Correcoes.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
