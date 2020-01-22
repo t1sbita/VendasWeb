@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VendasWeb.Data;
 
 namespace VendasWeb.Models
 {
     public class Vendedor
     {
+        private readonly VendasWebContext _context;
         public int VendedorId { get; set; }
         public string VendedorNome { get; set; }
         public string VendedorEmail { get; set; }
         public DateTime VendedorAniversario { get; set; }
         public float VendedorSalario { get; set; }
-        //public Filial Filial { get; set; }
+        public Filial Filial { get; set; }
         public int FilialId { get; set; }
 
         public ICollection<RegistroVendas> VendasRealizadas = new List<RegistroVendas>();
 
         
+        public Vendedor(VendasWebContext context)
+        {
+            _context = context;
+        }
 
         public Vendedor()
         {
@@ -31,7 +37,7 @@ namespace VendasWeb.Models
             VendedorEmail = vendedorEmail;
             VendedorAniversario = DateTime.Parse(vendedorAniversario.ToString("dd/MM/yyyy"));
             VendedorSalario = vendedorSalario;
-            //Filial = filial;
+            Filial = _context.Filial.Find(FilialId);
 
 
         }
@@ -52,5 +58,6 @@ namespace VendasWeb.Models
                 .Sum(vendas => vendas.ValorVenda);
         }
 
+        
     }  
 }

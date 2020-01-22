@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.VendedorAniversario)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FilialId)
+                    @Html.DisplayFor(modelItem => item.Filial.FilialNome)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.VendedorId">Editar</a> |
